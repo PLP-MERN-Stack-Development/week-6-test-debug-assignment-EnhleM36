@@ -1,0 +1,41 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node src/index.js",
+    "dev": "NODE_ENV=development nodemon src/index.js",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "NODE_ENV=test jest --testPathPattern=unit --coverage",
+    "test:integration": "NODE_ENV=test jest --testPathPattern=integration --coverage",
+    "test:coverage": "NODE_ENV=test jest --coverage",
+    "test:watch": "NODE_ENV=test jest --watch"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.13.8",
+    "morgan": "^1.10.1",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/tests/"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/models/index.js"
+    ]
+  }
+}
